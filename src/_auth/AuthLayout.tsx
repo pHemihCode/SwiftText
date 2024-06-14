@@ -16,7 +16,7 @@ const AuthLayout = () => {
                <Outlet />
              </section>
                
-            <div className='flex flex-1 w-full bg-red-600'>
+            <div className='lg:flex hidden flex-1 w-full '>
             <img src={MainImage} alt="Main image" className='w-full object-cover'/>
             </div>
             </>

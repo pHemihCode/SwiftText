@@ -3,23 +3,23 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
+import Logo from "../../assets/SwiftLogo.png"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
+import { Link } from 'react-router-dom'
 const SignInForm = () => {
     const form = useForm<z.infer<typeof signInSchema>>({
         resolver: zodResolver(signInSchema),
         defaultValues: {
-          username: "",
-
+          email:"",
+          password:"",
         },
       })
       function onSubmit(values: z.infer<typeof signInSchema>) {
@@ -28,28 +28,44 @@ const SignInForm = () => {
         console.log(values)
       }
   return (
-    <div> <Form {...form}>
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-      <FormField
+ <Form {...form}>
+    <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-5 w-full px-10 lg:px-0 lg:w-1/2">
+        <div>
+            <div className='flex flex-col justify-center items-center mb-8 h-5'>
+                <img src={Logo} alt="" className='w-52 h-40'/>
+            </div>
+<FormField 
         control={form.control}
-        name="username"
+        name="email"
         render={({ field }) => (
-          <FormItem>
-            <FormLabel>Username</FormLabel>
+          <FormItem className='py-3'>
+            <FormLabel className='text-white'>Email</FormLabel>
             <FormControl>
-              <Input placeholder="shadcn" {...field} />
+              <Input className="bg-gray-900 focus border-0 text-white"  {...field} />
             </FormControl>
-            <FormDescription>
-              This is your public display name.
-            </FormDescription>
-            <FormMessage />
+            <FormMessage className='text-[12px]'/>
           </FormItem>
         )}
       />
-      <Button type="submit">Submit</Button>
+
+<FormField
+        control={form.control}
+        name="password"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel className='text-white'>Password</FormLabel>
+            <FormControl>
+              <Input className="bg-gray-900 focus border-0 text-white" {...field} />
+            </FormControl>
+            <FormMessage className='text-[12px]'/>
+          </FormItem>
+        )}
+      />
+        </div>
+      <Button type="submit" className='bg-blue-500'>Log in</Button>
     </form>
+    <p className='text-sm text-center text-white py-2'>Don't have an account? <Link to='/sign-up' className='text-blue-700 font-semibold'>Sign up</Link></p>
   </Form>
-  </div>
   )
 }
 
