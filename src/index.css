@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 @tailwind base;
   @tailwind components;
   @tailwind utilities;
@@ -73,5 +74,41 @@
     body {
       @apply bg-background text-foreground;
       background-color: black;
+      color:white;
+      font-family: "Merriweather", serif;
     }
+    .invert-white {
+      @apply invert brightness-0 transition;
+    }
+    .logOutBtn{
+      transform: rotate(0);
+    }
+    .logOutBtn:hover{
+      transform: rotate(360deg);
+      transition: all .5s ease-in-out;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+      border-radius: 2px;
+    }
+  
+    .custom-scrollbar::-webkit-scrollbar-track:hover {
+      background: #09090a;
+    }
+  
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #5c5c7b;
+      border-radius: 50px;
+    }
+  
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #7878a3;
+    }
+  }
+  .custom-scrollbar{
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height:90vh;
+    padding-top:1rem;
   }

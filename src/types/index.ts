@@ -1,7 +1,7 @@
 import React from "react";
 
 export type INavLink = {
-    imgURL: string;
+    imgURL: string | any;
     route: string;
     label: string;
   };
