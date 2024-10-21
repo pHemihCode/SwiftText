@@ -4,16 +4,12 @@ import { Link } from 'react-router-dom'
 import { multiFormatDateString } from './../../lib/utils';
 import { FaRegEdit } from "react-icons/fa";
 import { userContext } from '@/context/AuthContextProvider';
-import { FcLike } from "react-icons/fc";
-import { CiSaveDown2 } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
-import { FaRegHeart } from "react-icons/fa";
+import { PostStats } from './PostStats';
 type PostCardProps ={
     post: Models.Document
 }
 function PostCard({post}: PostCardProps) {
     const {user} = userContext()
-    const [liked, setLiked] = useState(false)
     console.log(`This is Post card ${post}`)
   return (
     <div className='post-card text-xs md:text-md lg:text-base bg-slate-900 w-full rounded-md p-3'>
@@ -54,12 +50,7 @@ function PostCard({post}: PostCardProps) {
        <div className='flex w-full'>
        <img src={post.imageUrl} alt="" className=' object-cover w-full h-full rounded-md' />
        </div>
-       <div className='flex justify-between items-center py-2'>
-        {
-            liked ? <FcLike onClick={() => setLiked(false)} className='w-6 h-6'/> :  <FaRegHeart onClick={() => setLiked(true)} className='w-5 h-5'/>
-        }
-       <CiSaveDown2 className='w-6 h-6'/>
-       </div>
+      <PostStats post={post} userId={user.id}/>
     </div>
   )
 }

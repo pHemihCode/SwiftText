@@ -1,9 +1,15 @@
 import React from 'react'
+import loadingIcon from "../../assets/loader.svg"
+const Loader = () => (
+  <div className="flex-center w-full">
+    <img
+      src={loadingIcon}
+      alt="loader"
+      width={24}
+      height={24}
+      className="animate-spin"
+    />
+  </div>
+);
 
-function Loader() {
-  return (
-    <div>Loader</div>
-  )
-}
-
-export default Loader
+export default Loader;
